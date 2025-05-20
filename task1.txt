@@ -1,10 +1,31 @@
 example0.py
 Explain what it does. What do the different lines do?
 
+example0 sleeps for 3.5 seconds then prints the elapsed time.
 
-
-
+import time imports the time module.
+x =time.time() finds the amount of seconds that have passed since January 1st 1970 and attatches it to the variable x which becomes a float value of the epoch time.
+print(x) prints the current epoch time that was set in the prior line.
+time.sleep(3.5s) stops the program for the specified amount of time, putting it to sleep.
+print("I went to sleep for 3.5 seconds") just prints that message.
+now = time.time() finds the epoch time after the 3.5 seconds of the program being asleep.
+print(f"elapsed time: {now - x} seconds") takes the epoch time after the 3.5 seconds of sleep and subtracts the first epoch time from when the program started, giving a precise amount of time passed while asleep.
 
 example1.py
 Explain what it does. Give a brief summary of the program
 and explain the importance of each line.
+
+example1 counts each second and prints an "alarm" every time the amount of seconds is divisible by either 10, 20, or 60.
+
+alarms = [0,0,0] creates a list of three zeroes to fill in the values later on
+delays = [10,20,60] creates a list of the times when alarms should go off
+start = time.time() creates a float value of the starting epoch time
+alarms[0] = start + delays[0] (and the other values) creates a float value of the epoch time of when each alarm should be triggered
+While True just creates an infinite loop
+for i in range(0,3) creates a for loop where i corresponds to the index of the alarms
+now = time.time() finds the current time every time the loop runs
+if now > alarms[i] checks each alarm to see if the current epoch time is greater than the epoch time set for the alarms
+print(f"alarm {i} {delays[i]} second alarm has been triggered because now ({round(now,3)}) > alarm {i} {round(alarms[i],3)}") prints out every time an alarm is triggered and explains why it was
+alarms[i] = now + delays[i] resets the alarm so it is able to be triggered again
+time.sleep(1) stops the program for 1 second (so it counts seconds)
+print(f"time elapsed is {round(time.time() - start,3)}") prints out the amount of seconds since you clicked start
