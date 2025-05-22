@@ -44,6 +44,7 @@ def run():
     for i in range(10):
         char = character()
         print(char)
+        time.sleep(0.1)
         y = keyboard.read_key()
         print(y)
         if y != char:
@@ -52,11 +53,14 @@ def run():
             break
         else:
             print("correct!")
-        time.sleep(0.1)
     
     now = time.time()
     elapsed = now - x
     rounded = round(elapsed, 2)
     print(f"You typed {i+1} characters in {rounded} seconds!")
 
-run()
+print("Press space to start")
+while True:
+    if keyboard.is_pressed('space'):
+        run()
+        break
